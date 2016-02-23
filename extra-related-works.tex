@@ -1,0 +1,43 @@
+\section{More Related Works}
+\begin{frame}
+\begin{itemize}
+
+  \item Apache Giraph 
+    \begin{itemize}
+        \item Open source clone of Google's Pregel which runs on standard Hadoop Infrastructure 
+    \end{itemize}
+    
+  \item GiraphX 
+     \begin{itemize}
+        \item modified BSP model to allow serializability without affecting the highly parallel nature of a BSP Model
+     \end{itemize} 
+     
+     \item PowerGraph 
+     \begin{itemize}
+    	\item eliminates the degree dependence of the vertex-program by directly exploiting the Gather-And-Scatter decomposition to factor vertex-programs over edges
+     \end{itemize} 
+     
+  \item Mizan 
+  	\begin{itemize}
+        \item Optimized Pregel system  that doesn't assume any a priori knowledge of the structure of the graph or behavior of the algorithm
+        \item supports  dynamic  load  balancing  and  efficient vertex migration.
+     \end{itemize} 
+    \end{itemize}
+\end{frame}
+  
+  \begin{frame}
+\begin{itemize}
+  
+  \item Pegasus
+  	\begin{itemize}
+	\item Peta-Scale data mining which performs typical graph mining tasks 
+  	\item GIM-V primitive,  standing  for Generalized  Iterative  Matrix-Vector  multiplication
+	\end{itemize}
+	
+  \item Golden Orb (Open Source graph database, implementation of Pregel)
+  
+  \item HAMA (Open Source implementation of Pregel) 
+  \item Catch the Wind (CatchW) (Build on top of HAMA, code like in Pregel) 
+  
+  \end{itemize}
+\end{frame}
