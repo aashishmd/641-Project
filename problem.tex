@@ -1,19 +1,46 @@
 \section{Problem}
 % TODO What is the problem and why do we care
-\subsection{Context}
+
+\subsection{Background}
+
 \begin{frame}
 \begin{itemize}
-  \item Pregel takes a directed graph as input where vertices and edges are associated with respective modifiable, user defined values
-  \item Pregel has topology mutation to resolve conflicts
-  \item Users need to have prior knowledge about ordering of mutation and conflicts that may occur
+  \item Many problems in scientific computing, data mining and other domains are leading to graph algorithm specific soltuions
+  \item Growth of these problems (e.g. Web Graph and various social networks) asks for parallel computing resources.
+  \item Some of the algorithms requires a combination of vertex-centric (parallel) and global (sequential) computations. 
+  	\begin{itemize}
+	 \item An example could be k-means-like graph clustering algorithm.
+	 \end{itemize}
+  \item This type of algorithm requires a means of graph mutation operations.
+    	\begin{itemize}
+		\item Eg: Giraph, Mizan, GPS, Graph Lab (supports partial mutation)
+	\end{itemize}
+\end{itemize}	
+\end{frame}
+
+\subsection{Context}	
+
+\begin{frame}
+  	\begin{itemize}
+		\item However, topology mutation operations performed concurrently at different vertices can conflict with each other
+  \linebreak
+  \item Pregel tries to resolve mutation conflicts by using:
+  	  	\begin{itemize}
+			\item Partial ordering
+			\item User defined handlers
+			\linebreak
+		\end{itemize}
+  \item Users need to have prior knowledge regarding ordering of mutation and conflicts that may occur
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+  \item Correctness partial ordering.
+  \linebreak
+  \item Design a detection technique to identify the all the conflicts that may occur while minimizing the false positives.
+  \linebreak
+  \item How to provide a better abstraction to enable means of an unambiguous mutation of graph topology?
 \end{itemize}
 \end{frame}
 
-\subsection{Background}
-\begin{frame}
-\begin{itemize}
-  \item More about Topology Mutation and Stuffs
-  \item Conflicts presented in the paper
-  \item Possibly an example
-\end{itemize}
-\end{frame}
