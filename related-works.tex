@@ -1,18 +1,78 @@
 \section{Related Works}
 \subsection{Closely related works}
+
 \begin{frame}
+Pregel
+\linebreak
 \begin{itemize}
-  \item Pregel : provides partial ordering, but forces the programmer to understand the reordering to close the gap between the logic of the programmer and what actually happens, or, it doesn?t provide proof that the reordering doesn't cause problem.
-  \item GPS features an optional dynamic migration scheme. Dynamic migration repartitions the graph during computation by migrating vertices between workers, to improve workload balance and network usage. 
-  \item GraphLab does not fully support graph mutations. It supports adding edges, but not removal of vertices or edges.
-  \item Pregel-like Graph Processing Systems (Apache Graph, GPS, Mizan, and GraphLab) 
-  \item Parallel Boost Graph Library and CGMgraph. 
+  \item Pregel provides the topology mutation feature to facilitate graph algorithms such as clustering algorithm, minimum spanning tree.
+  \item Users' Compute function is used to send requests such as add/remove vertices or edges.
+  \item Although it provides partial ordering to achieve determinism, yet forces the programmer to understand the reordering to close the gap between the logic of the programmer and what actually happens to effectively resolve conflicts that are not solved by partial ordering.
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+GraphLab
+\linebreak
+	\begin{itemize}
+	\item GraphLab supports distributed computation and incorporates the features and improvements of PowerGraph.
+	\item It partitions graphs using vertex cuts rather than edge cuts to allow high degree vertices to be partitioned across multiple machines.
+	 \item Nevertheless, GraphLab  only supports partial graph mutations: it supports adding edges, but no removal of vertices or edges support is present. 
+  	\end{itemize}
+\end{frame}
+
+\begin{frame}
+GPS
+\linebreak
+	\begin{itemize}
+	\item GPS is another open-source Pregel implementation from Stanford InfoLab.
+	 \item It features a dynamic migration scheme if necessary.
+	 \item Dynamic migration improves workload balance and network usage.  
+	 \item In this scheme vertices can be exchanged between workers based on the amount of data sent by each vertex.
+	\item The scheme locates migrated vertices by relabelling their vertex IDs and updating the adjacency lists, which indicates it does not work for algorithms such as DMST (requiring mutation). 
+  	\end{itemize}
 \end{frame}
 
 \subsection{More related works}
 \begin{frame}
 \begin{itemize}
-  \item Apache Giraph is an ope
+
+  \item Apache Giraph 
+    \begin{itemize}
+        \item Open source clone of Google's Pregel which runs on standard Hadoop Infrastructure 
+    \end{itemize}
+    
+  \item GiraphX 
+     \begin{itemize}
+        \item modified BSP model to allow serializability without affecting the highly parallel nature of a BSP Model
+     \end{itemize} 
+     
+     \item PowerGraph 
+     \begin{itemize}
+    	\item eliminates the degree dependence of the vertex-program by directly exploiting the Gather-And-Scatter decomposition to factor vertex-programs over edges
+     \end{itemize} 
+     
+  \item Mizan 
+  	\begin{itemize}
+        \item Optimized Pregel system  that doesn't assume any a priori knowledge of the structure of the graph or behavior of the algorithm
+        \item supports  dynamic  load  balancing  and  efficient vertex migration.
+     \end{itemize} 
+    \end{itemize}
+\end{frame}
+  
+  \begin{frame}
+\begin{itemize}
+  
+  \item Pegasus
+  	\begin{itemize}
+	\item Peta-Scale data mining which performs typical graph mining tasks 
+  	\item GIM-V primitive,  standing  for Generalized  Iterative  Matrix-Vector  multiplication
+	\end{itemize}
+	
+  \item Golden Orb (Open Source graph database, implementation of Pregel)
+  
+  \item HAMA (Open Source implementation of Pregel) 
+  \item Catch the Wind (CatchW) (Build on top of HAMA, code like in Pregel) 
+  
   \end{itemize}
 \end{frame}
