@@ -1,0 +1,31 @@
+\section{Evaluation Method}
+\begin{frame}
+Given a set of graph mutation, our goal is to prove:
+  	\begin{itemize}
+		 \item The reordering of edge remove $\rightarrow$ vertex remove $\rightarrow$
+		 vertex add $\rightarrow$ edge add is equivalent to the original order
+		 \item The soundness of our analysis to detect conflicting mutation
+		 \item The completeness of resolving conflicting mutation with the
+		 existence of required handlers.
+	\end{itemize}
+For the first goal, our mean is to model graphs and graph transformation in a
+proof assistant to prove the equivalence of the reordering.
+	\begin{itemize}
+	  \item The same graph model can be extended to prove the completeness of the
+	  2nd and 3rd solutions.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+ To evaluate the our anlaysis
+\begin{itemize}
+  \item We formalize the analysis to evaluate a sequence of mutation and return
+  the existence of conflicts.
+\item Formalize the semantic of newly defined mutation operations
+\item Show that analysis reports true if conflicts exists
+\item Show that conflicts doesn't exist with our proposed operations
+\end{itemize}
+
+\end{frame}
+
+ 
