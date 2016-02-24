@@ -1,12 +1,42 @@
 \section{Examples}
-\subsection{Input}
-\begin{frame}
-\begin{itemize}
-  \item What kind of ordering will mess up the programmers reasonings
-     \begin{itemize}
-     \item Example: (That it causes a problem)
-     \item Proof: That it doesn't. Use COQ to model the process, and prove that it doesn't cause a problem
-     \end{itemize}
-\end{itemize}
+\subsection{Problem example}
+\begin{frame}[fragile]
+\begin{lstlisting}[
+    language=Java]
+  public interface Computation<I, V, E, M>{
+    void compute(Vertex<I,V,E> vertex, Iterable<M> messages);
+    //Must be defined by user to do computation on a single Vertex.
+	
+    void 	addEdgeRequest(I sourceVertexId, Edge<I,E> edge);
+    void 	addVertexRequest(I id, V value);
+    void 	removeEdgesRequest(I sourceVertexId, I targetVertexId);
+    void 	removeVertexRequest(I vertexId);
+    long 	getSuperstep();
+    long 	getTotalNumEdges();
+    long 	getTotalNumVertices();
+    void 	postSuperstep();
+    void 	preSuperstep();
+    void 	sendMessage(I id, M message);
+  }
+\end{lstlisting}
+Essential operations of a \textit{Computation} in Giraph
 \end{frame}
 
+\begin{frame}[fragile]
+\begin{lstlisting}[
+    language=Java]
+  Public class SimpleMutateGraphComputation extends BasicComputation<
+    LongWritable, DoubleWritable, FloatWritable, DoubleWritable> {
+
+    public void compute(Vertex<LongWritable, DoubleWritable, FloatWritable>
+      vertex, Iterable<DoubleWritable> messages){ 
+      if (getSuperstep() == 0) {
+      	addVertexRequest(getVertexCount(), new
+      	DoubleWritable(vertex.getValue()));
+      } else if (getSuperstep() == 1) {
+        vertex.voteToHalt();
+    } 
+  }
+\end{lstlisting}
+Example of a program that mutates a graph
+\end{frame}
