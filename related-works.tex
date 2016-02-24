@@ -2,77 +2,42 @@
 \subsection{Closely related works}
 
 \begin{frame}
-Pregel
-\linebreak
 \begin{itemize}
   \item Pregel provides the topology mutation feature to facilitate graph algorithms such as clustering algorithm, minimum spanning tree.
-  \item Users' Compute function is used to send requests such as add/remove vertices or edges.
   \item Although it provides partial ordering to achieve determinism, yet forces the programmer to understand the reordering to close the gap between the logic of the programmer and what actually happens to effectively resolve conflicts that are not solved by partial ordering.
+  \item Pregel-like frameworks such as Giraph, GPS, Mizan, and GraphLab supports graph mutations, yet do not address the conflicts arising due to concurrent topology mutation.
   \end{itemize}
+   \let\thefootnote\relax\footnotetext{\tiny[Minyang et. el., "An Experimental Comparison of Pregel-like Graph Processing Systems", VLDB, Vol. 7 Issue 12, 2014]}
 \end{frame}
 
 \begin{frame}
-GraphLab
-\linebreak
 	\begin{itemize}
-	\item GraphLab supports distributed computation and incorporates the features and improvements of PowerGraph.
-	\item It partitions graphs using vertex cuts rather than edge cuts to allow high degree vertices to be partitioned across multiple machines.
-	 \item Nevertheless, GraphLab  only supports partial graph mutations: it supports adding edges, but no removal of vertices or edges support is present. 
+	\item Martin et. al. formalized the graph transformation based on set-theoretic model.
+	\item In the paper, it is mentioned that the graph transformation should specify the condition under which it will be applicable and the action needs to be taken at a position in a source graph to obtain target graph.
+	\item They do not map graphs into graphs, as in traditional graph rewriting, rather verify that the applicability condition of a transformation rule is true
+	 \item They have also claimed application of well-formed graph transformations to well-formed graphs yields again well-formed graphs.
+	 \item This kind of formalization has not been yet utilized to address the correctness of partial ordering.
   	\end{itemize}
+  \let\thefootnote\relax\footnotetext{\tiny[Martin Strecker., "Modeling and Verifying Graph Transformations in Proof Assistants", ENTCS, Vol. 203 Issue 1, 2008]}
 \end{frame}
 
-\begin{frame}
-GPS
-\linebreak
-	\begin{itemize}
-	\item GPS is another open-source Pregel implementation from Stanford InfoLab.
-	 \item It features a dynamic migration scheme if necessary.
-	 \item Dynamic migration improves workload balance and network usage.  
-	 \item In this scheme vertices can be exchanged between workers based on the amount of data sent by each vertex.
-	\item The scheme locates migrated vertices by relabelling their vertex IDs and updating the adjacency lists, which indicates it does not work for algorithms such as DMST (requiring mutation). 
-  	\end{itemize}
-\end{frame}
 
 \subsection{More related works}
 \begin{frame}
 \begin{itemize}
 
-  \item Apache Giraph 
-    \begin{itemize}
-        \item Open source clone of Google's Pregel which runs on standard Hadoop Infrastructure 
-    \end{itemize}
-    
-  \item GiraphX 
-     \begin{itemize}
-        \item modified BSP model to allow serializability without affecting the highly parallel nature of a BSP Model
-     \end{itemize} 
-     
-     \item PowerGraph 
-     \begin{itemize}
-    	\item eliminates the degree dependence of the vertex-program by directly exploiting the Gather-And-Scatter decomposition to factor vertex-programs over edges
-     \end{itemize} 
-     
-  \item Mizan 
-  	\begin{itemize}
-        \item Optimized Pregel system  that doesn't assume any a priori knowledge of the structure of the graph or behavior of the algorithm
-        \item supports  dynamic  load  balancing  and  efficient vertex migration.
-     \end{itemize} 
+\item Serafettin Tasci and Murat Demirbas, "Giraphx: Parallel Yet Serializable Large-Scale Graph Processing", EuroPar, 2013. 
+\item Joseph E. Gonzalez, Yucheng Low, Haijie Gu, Danny Bickson, Carlos Guestrin, "PowerGraph: Distributed Graph-Parallel Computation on Natural Graphs", OSDI, 2012.     
+\item Zuhair Khayyat, Karim Awara, Amani Alonazi, Hani Jamjoom, Dan Williams, and Panos Kalnis, "Mizan: A System for Dynamic Load Balancing in Large-scale Graph Processing" ACM EuroSys, 2013. 
+Zuhair Mizan 
+\item Semih Salihoglu and Jennifer Widom, "GPS: A Graph Processing System", Proc. International Conference on Scientific and Statistical Database Management (SSDBM), 2013.
     \end{itemize}
 \end{frame}
-  
-  \begin{frame}
+ 
+\begin{frame}
 \begin{itemize}
-  
-  \item Pegasus
-  	\begin{itemize}
-	\item Peta-Scale data mining which performs typical graph mining tasks 
-  	\item GIM-V primitive,  standing  for Generalized  Iterative  Matrix-Vector  multiplication
-	\end{itemize}
-	
-  \item Golden Orb (Open Source graph database, implementation of Pregel)
-  
-  \item HAMA (Open Source implementation of Pregel) 
-  \item Catch the Wind (CatchW) (Build on top of HAMA, code like in Pregel) 
-  
-  \end{itemize}
+ \item Yucheng Low, Joseph Gonzalez, Aapo Kyrola, Danny Bickson, Carlos Guestrin, and Joseph M. Hellerstein, "GraphLab: A New Parallel Framework for Machine Learning, In Uncertainty in Artificial Intelligence, 2010.
+\item U Kang, Charalampos E. Tsourakakis, and Christos Faloutsos, PEGASUS: A Peta-Scale Graph Mining System Implementation and Observations, IEEE International Conference on Data Mining (ICDM), 2009.
+\item Zechao Shang, and Jeffrey Xu Yu, "Catch the Wind: Graph workload balancing on cloud Data Engineering", IEEE 29th International Conference in Data Engineering, 2013.
+    \end{itemize}
 \end{frame}
