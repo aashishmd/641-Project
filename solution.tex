@@ -19,7 +19,7 @@
 		\item Possible combinations introducing conflicts
 		\linebreak
 			\begin{figure}
-			\includegraphics[width=0.8\linewidth]{Pictures/table.png}
+			\includegraphics[width=0.8\linewidth]{figures/table.jpg}
 			\caption{Combination that creates conflicts}
 			\end{figure}
 	\end{itemize}
@@ -31,7 +31,7 @@
 		      \linebreak
 		   	  \begin{itemize}
 				\item Look at the compute() of active vertices in a Superstep 
-				\item Collect topolpgy mutation operations
+				\item Collect topology mutation operations
 				\item Prune the list if the operation in consideration does not fall into any categories that create conflicts
 				\item Take control and data flow into consideration
 				\item Formally model the graph mutation and use a proof assistant to prove the correctness of the process
@@ -39,11 +39,25 @@
 		  \end{itemize}
 \end{frame}
 
+\begin{frame}	
+		 \begin{itemize}
+		      \item Handle conflicts by abstraction
+		      \linebreak
+		   	  \begin{itemize}
+				\item There are some conflicts that can not be solved by partial ordering 
+				\item User defined handlers are suggested to resolve such issues.
+				\item Current mechanism is writing user defined handlers to randomly select one of the operation that introduces conflicts.
+				\item A better abstraction can add priority to handlers to help decide the operation to be performed if there is a conflict.
+		     	  \end{itemize}
+		  \end{itemize}
+\end{frame}
 
-\subsection{Examples}
+
+\subsection{Example}
 \begin{frame}
-\begin{itemize}
-  \item 
-    
-\end{itemize}
+ \begin{figure}
+		\includegraphics[width=6cm, height=5 cm, angle=0]{figures/example.jpg}
+		\caption{K-Truss Algorithm }
+		\end{figure}
+		\let\thefootnote\relax\footnotetext{\tiny[Louise et el., "Using Pregel-like Large Scale Graph Processing Frameworks for Social Network Analysis", ASONAM 2012]}
 \end{frame}
