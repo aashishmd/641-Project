@@ -3,18 +3,7 @@
 \subsection{Analysis on the Conflicts}
 
 \begin{frame}
-	\begin{itemize}
-		\item Checking correctness of partial ordering	
-		\linebreak
-		\begin{itemize}
-			\item Formally model the graph topology mutation
-			\linebreak
-			\item Check if  the reordered mutation is same as the users' denoted mutation
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
+	1. Analysis to detect conflicts
 	\begin{itemize}
 		\item Possible combinations introducing conflicts
 		\linebreak
@@ -40,8 +29,8 @@
 \end{frame}
 
 \begin{frame}	
-		 \begin{itemize}
-		      \item Handle conflicts by abstraction
+
+2. Handle conflicts by abstraction
 		      \linebreak
 		   	  \begin{itemize}
 				\item There are some conflicts that can not be solved by partial ordering 
@@ -49,7 +38,7 @@
 				\item Current mechanism is writing user defined handlers to randomly select one of the operation that introduces conflicts.
 				\item A better abstraction can add priority to handlers to help decide the operation to be performed if there is a conflict.
 		     	  \end{itemize}
-		  \end{itemize}
+
 \end{frame}
 
 
@@ -58,6 +47,6 @@
  \begin{figure}
 		\includegraphics[width=6cm, height=5 cm, angle=0]{figures/example.jpg}
 		\caption{K-Truss Algorithm }
-		\end{figure}
+\end{figure}
 		\let\thefootnote\relax\footnotetext{\tiny[Louise et el., "Using Pregel-like Large Scale Graph Processing Frameworks for Social Network Analysis", ASONAM 2012]}
 \end{frame}

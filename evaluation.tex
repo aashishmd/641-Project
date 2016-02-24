@@ -2,22 +2,15 @@
 \begin{frame}
 Given a set of graph mutation, our goal is to prove:
   	\begin{itemize}
-		 \item The reordering of edge remove $\rightarrow$ vertex remove $\rightarrow$
-		 vertex add $\rightarrow$ edge add is equivalent to the original order
 		 \item The soundness of our analysis to detect conflicting mutation
 		 \item The completeness of resolving conflicting mutation with the
 		 existence of required handlers.
-	\end{itemize}
-For the first goal, our mean is to model graphs and graph transformation in a
-proof assistant to prove the equivalence of the reordering.
-	\begin{itemize}
-	  \item The same graph model can be extended to prove the completeness of the
-	  2nd and 3rd solutions.
-	\end{itemize}
+		 \item We want to model graph model graphs and graph transformation in a proof assistant and extend it further to prove the completeness of the 1st and 2nd solutions.
+	          \end{itemize}	         
 \end{frame}
 
 \begin{frame}
- To evaluate the our anlaysis
+ To evaluate the our anlaysis\linebreak
 \begin{itemize}
   \item We formalize the analysis to evaluate a sequence of mutation and return
   the existence of conflicts.
