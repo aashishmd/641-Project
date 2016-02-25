@@ -1,22 +1,27 @@
 \section{Evaluation Method}
 \begin{frame}
-Given a set of graph mutation, our goal is to prove:
+Our two goals:
   	\begin{itemize}
 		 \item The soundness of our analysis to detect conflicting mutation
 		 \item The completeness of resolving conflicting mutation with the
-		 existence of required handlers.
-		 \item We want to model graph model graphs and graph transformation in a proof assistant and extend it further to prove the completeness of the 1st and 2nd solutions.
-	          \end{itemize}	         
+		 existence of required handlers
+    \end{itemize}
+    Evaluating our solutions by applying it on graph processing platform
+    benchmarks:
+    \begin{itemize}
+		 \item Graphalytics
+		 \item Graph500
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
- To evaluate the our anlaysis\linebreak
+ We also plan to model graph transformations in proof assistants to
+ provide a formal proof of the soundness of out solutions \linebreak
 \begin{itemize}
-  \item We formalize the analysis to evaluate a sequence of mutation and return
-  the existence of conflicts.
-\item Formalize the semantic of newly defined mutation operations
-\item Show that analysis reports true if conflicts exists
-\item Show that conflicts doesn't exist with our proposed operations
+  \item Formalizing graphs and graph transformation
+  \item Formalizing our analysis 
+  \item Martin Strecker., "Modeling and Verifying Graph Transformations in
+  Proof Assistants", ENTCS, Vol. 203 Issue 1, 2008
 \end{itemize}
 
 \end{frame}
